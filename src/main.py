@@ -1,8 +1,3 @@
-import os
-from dotenv import load_dotenv
-
-load_dotenv()  # Load environment variables from .env file
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -10,29 +5,29 @@ from src.routes import user_routes
 from src.config import engine
 from src.models import Base
 
-# Create the FastAPI app
+# Crea l'app FastAPI
 app = FastAPI(
     title="Large Language Diffusion Model API",
-    description="API to use various AI models through purchasable credits",
+    description="API per utilizzare diversi modelli di IA tramite crediti acquistabili",
     version="1.0.0"
 )
 
-# Configure CORS middleware
+# Configura il middleware CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Change to specific URLs in production
+    allow_origins=["*"],  # Cambia con gli URL specifici in produzione
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Automatically create tables on app startup (optional)
+# Creiamo le tabelle in modo automatico all'avvio dell'app (opzionale)
 Base.metadata.create_all(bind=engine)
 
-# Include routes
+# Includi le rotte
 app.include_router(user_routes.router, prefix="/users", tags=["Users"])
-// app.include_router(auth_routes.router, prefix="/auth", tags=["Authentication"])
-// app.include_router(ai_routes.router, prefix="/ai", tags=["AI Services"])
+# app.include_router(auth_routes.router, prefix="/auth", tags=["Authentication"])
+# app.include_router(ai_routes.router, prefix="/ai", tags=["AI Services"])
 
 @app.get("/")
 def read_root():

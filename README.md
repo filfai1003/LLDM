@@ -11,6 +11,7 @@
 ## Installation
 To install the dependencies, run the command:
 ```bash
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
