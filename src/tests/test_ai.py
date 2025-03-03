@@ -16,4 +16,4 @@ def setup_and_teardown_db():
 def test():
     assert True
 
-# TODO TEST USERS
+# TODO TEST AI

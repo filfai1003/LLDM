@@ -5,6 +5,7 @@ class UserBase(BaseModel):
     name: str
     email: EmailStr
     credits: Optional[int] = 0
+    user_type: str = "base"
 
 class UserCreate(UserBase):
     password: str
